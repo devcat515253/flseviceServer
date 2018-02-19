@@ -24,8 +24,12 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+//const baseUrl = `http://192.168.1.150:${port}`;
+const baseUrl = `http://127.0.0.1:${port}`;
+server.listen(port, () => {
+    console.log(`Listening at ${baseUrl}`);
+});
 
-server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
