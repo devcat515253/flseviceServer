@@ -44,5 +44,35 @@ router.post('/newUser', function (req, res, next) {
 
 });
 
+router.post('/checkLogin', function (req, res, next) {
+    let newUser = req.body;
+
+    // res.send(newUser);
+    console.log(newUser);
+
+    sequelize.query(`SELECT user_login FROM flservice.user WHERE user_login=:login LIMIT 1`,
+        {
+            replacements: {
+                login: newUser.login
+            },
+            type: sequelize.QueryTypes.SELECT
+        }).then(logins => {
+        console.log(logins);
+
+        if  (logins.length > 0) {
+            res.send(false);
+        }else{
+            res.send(true);
+        }
+
+    }).catch(error => {
+        throw new Error(error);
+    });
+
+
+});
+
+
+
 
 module.exports = router;

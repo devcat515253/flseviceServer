@@ -4,9 +4,6 @@ var sequelize = require('../db-connection');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-
-
-
     sequelize.query(`SELECT * FROM flservice.user`,
         { type: sequelize.QueryTypes.SELECT })
         .then(users => {
@@ -15,8 +12,6 @@ router.get('/', function(req, res, next) {
         }).catch(error =>{
             throw new Error(error);
         });
-
-
 });
 
 router.get('/fake', function(req, res, next) {
