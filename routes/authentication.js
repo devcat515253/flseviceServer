@@ -20,17 +20,17 @@ router.post('/checkAuth', function(req, res, next) {
                     // Passwords match
                     console.log('ok админ найден');
                     console.log(res1);
-                    res.send(true);
+                    res.send( users[0]);
                     return;
                 } else {
                     // Passwords don't match
                     console.log('error админа с таким логином паролем не существует');
-                    res.send(false);
+                    res.send( []);
                     return;
                 }
             });
         } else {
-            res.send(false);
+            res.send([]);
         }
 
     }).catch(error => {
