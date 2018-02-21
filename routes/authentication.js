@@ -5,7 +5,7 @@ var user = require('../table_model/user-table');
 var bcrypt = require('bcrypt');
 
 /* GET users listing. */
-router.post('/auth', function(req, res, next) {
+router.post('/checkAuth', function(req, res, next) {
     let authUser = req.body;
 
     sequelize.query(`SELECT *  FROM  flservice.user where user_login=:login limit 1`,
