@@ -36,8 +36,16 @@ router.post('/newUser', function (req, res, next) {
                 type: sequelize.QueryTypes.INSERT
             }).then(id_user => {
                 console.log(id_user);
+                let status = {
+                    status : 'okay'
+                };
+                res.send(status);
 
         }).catch(error => {
+            let status = {
+                status : 'error'
+            };
+            res.send(status);
             throw new Error(error);
         });
     });
